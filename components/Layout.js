@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Link from "next/link"
 import React from 'react'
 
 export default function Layout({ title,children}) {
@@ -13,7 +14,15 @@ export default function Layout({ title,children}) {
 
     <div className="flex min-h-screen flex-col justify-between">
         <header>
-header
+          <nav>
+            <Link legacyBehavior href="/">
+                <a className="text-lg font-bold">amazona</a>
+            </Link>
+            <div>
+                <Link href="/cart">Cart</Link>
+                <Link href="/login">Login</Link>
+            </div>
+          </nav>
         </header>
         <main>
          {children}

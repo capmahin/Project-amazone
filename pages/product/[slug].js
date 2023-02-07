@@ -18,8 +18,15 @@ export default function ProductScreen() {
   const addToCartHandler = () =>{
     const existItem = state.cart.cartItems.find((x)=> x.slug === product.slug)
     const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    if(product.countInStock < quantity){
+      alert('Sorry. Product is out of stock')
+      return;
+    }
+
         dispatch({type: 'CART_ADD_ITEM', payload:{ ...product, quantity}});
   }
+
   return (
     <Layout title={product.name}>
      <div className="py-2">

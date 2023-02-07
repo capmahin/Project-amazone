@@ -5,7 +5,7 @@ import React, { useContext } from 'react'
 
 export default function Layout({ title,children}) {
 
-  const {state, dispatch} = useContext(Store);
+  const {state} = useContext(Store);
   const {cart} = state;
   return (
     <>

@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout"
 import data from "@/utils/data";
+import Link from "next/link";
 import { useRouter } from "next/router"
 import React from 'react'
 
@@ -12,7 +13,9 @@ export default function ProductScreen() {
   }
   return (
     <Layout title={product.name}>
-      <h1>{product.name}</h1>
+     <div className="py-2">
+      <Link href="/">back to products</Link>
+     </div>
     </Layout>
   )
 }

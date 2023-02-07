@@ -7,7 +7,12 @@ export default function ProductScreen() {
   const {query} = useRouter();
   const {slug} = query;
   const product = data.products.find(x => x.slug === slug)
+  if(!product){
+    return <div>Product Not Found</div>
+  }
   return (
-    <Layout title={product.name}></Layout>
+    <Layout title={product.name}>
+      <h1>{product.name}</h1>
+    </Layout>
   )
 }

@@ -43,8 +43,14 @@ export default function CartScreen() {
                                     >
                                      
                                     </Image>
+                                    &nbsp;
+                                    {item.name}
+
                                     </a>
                                 </Link>
+                              </td>
+                              <td className="p-5 text-right">
+                                {item.quantity}
                               </td>
                             </tr>
                         })}

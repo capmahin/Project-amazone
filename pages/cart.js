@@ -1,7 +1,15 @@
-import React from 'react'
+import Layout from "@/components/Layout";
+import { Store } from "@/utils/store"
+import React, { useContext } from 'react'
 
 export default function CartScreen() {
+
+    const {state, dispatch} = useContext(Store);
+    const {
+        cart:{cartItems},
+    } = state;
   return (
-    <div>cart</div>
-  )
+    <Layout title="Shopping Cart">
+
+    </Layout>
 }

@@ -14,7 +14,7 @@ export default function CartScreen() {
 
     const removeItemHandler =(item)=>{
         dispatch({type:'CART_REMOVE_ITEM', payload:item});
-    }
+    };
   return (
     <Layout title="Shopping Cart">
     <h1 className="mb-4 text-xl">Shopping Cart</h1>
@@ -35,7 +35,7 @@ export default function CartScreen() {
                      </tr>
                    </thead>
                    <tbody>
-                       {cartItems.map((item)=>{
+                       {cartItems.map((item)=>(
                            <tr key={item.slug} className="border-b">
                              <td>
                                <Link legacyBehavior href={`/product/${item.slug}`}>
@@ -68,7 +68,7 @@ export default function CartScreen() {
                                </button>
                              </td>
                            </tr>
-                       })}
+                       ))}
                    </tbody>
                </table>
              </div>

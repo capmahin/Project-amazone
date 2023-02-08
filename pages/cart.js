@@ -63,7 +63,6 @@ export default function CartScreen() {
                              <td className="p-5 text-center">
                                <button onClick={()=> removeItemHandler(item)}>
                                    <XCircleIcon className="h-6 w-5">
-
                                    </XCircleIcon>
                                </button>
                              </td>

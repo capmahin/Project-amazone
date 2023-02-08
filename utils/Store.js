@@ -25,6 +25,7 @@ function reducer(state, action){
             const cartItems = state.cart.cartItems.filter(
                 (item)=>item.slug !== action.payload.slug
             );
+            return {...state,cart:{...state.cart, cartItems} };
         }
         default :
         return state;

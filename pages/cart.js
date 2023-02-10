@@ -76,6 +76,9 @@ export default function CartScreen() {
                 <li>
                   <div className="pb-3">
                    Subtotal ({cartItems.reduce((a,c)=> a+c.quantity, 0)})
+                   {' '}
+                   : $
+                   {cartItems.reduce((a, c)=>a+a.quantity * c.price, 0)}
                   </div>
                 </li>
               </ul>

@@ -3,9 +3,11 @@ import { Store } from "@/utils/store"
 import {XCircleIcon} from '@heroicons/react/outline';
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useContext } from 'react'
 
 export default function CartScreen() {
+  const router = useRouter();
 
     const {state, dispatch} = useContext(Store);
     const {
@@ -82,7 +84,7 @@ export default function CartScreen() {
                   </div>
                 </li>
                 <li>
-                  <button className="primary-button w-full">
+                  <button onClick={() => router.push('/shipping')} className="primary-button w-full">
                     Check Out
                   </button>
                 </li>

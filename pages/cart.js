@@ -71,6 +71,15 @@ export default function CartScreen() {
                    </tbody>
                </table>
              </div>
+             <div className="card p-5">
+              <ul>
+                <li>
+                  <div className="pb-3">
+                   Subtotal ({cartItems.reduce((a,c)=> a+c.quantity, 0)})
+                  </div>
+                </li>
+              </ul>
+             </div>
            </div>
        )
     }

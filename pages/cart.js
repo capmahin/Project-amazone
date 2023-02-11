@@ -58,7 +58,9 @@ export default function CartScreen() {
                              </td>
                              <td className="p-5 text-right">
                                {
-                                [...Array(item.countInStock)]
+                                [...Array(item.countInStock).keys()].map(x => (
+                                  <option key={x+1} value={x+1}></option>
+                                ))
                                }
 
 

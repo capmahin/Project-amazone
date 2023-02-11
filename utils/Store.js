@@ -1,9 +1,10 @@
 import {createContext, useReducer} from 'react';
+import Cookies from 'js-cookie';
 
 export const Store = createContext();
 
 const initialState = {
-    cart:{cartItems:[]},
+    cart: Cookies.get('cart'),
 };
 
 function reducer(state, action){

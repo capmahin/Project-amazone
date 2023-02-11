@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout"
+import Link from "next/link"
 import React from 'react'
 
 export default function LoginScreen() {
@@ -20,6 +21,10 @@ export default function LoginScreen() {
         <div className="mb-4">
          <button className="primary-button">Login</button>
         </div>
+        <div className="mb-4">
+         Don&apos;t have account? &nbsp;
+        </div>
+        <Link legacyBehavior href="register">Register</Link>
      </form>
     </Layout>
   )

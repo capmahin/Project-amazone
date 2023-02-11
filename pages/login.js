@@ -8,9 +8,17 @@ export default function LoginScreen() {
         <h1 className="mb-4 text-xl">Login</h1>
         <div className="mb-4">
         <label htmlFor="email">Email</label>
-        <input type="email" className="w-full">
-            
+        <input type="email" className="w-full" id="email" autoFocus>
+
         </input>
+        </div>
+        <div className="mb-4">
+        <label htmlFor="password">Password</label>
+        <input type="password" className="w-full" id="password" autoFocus>
+        </input>
+        </div>
+        <div className="mb-4">
+         <button className="primary-button">Login</button>
         </div>
      </form>
     </Layout>

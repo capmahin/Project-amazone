@@ -111,7 +111,6 @@ import dynamic from "next/dynamic";
    </Layout>
   );
    
-  
 }
 
 export default dynamic (()=> Promise.resolve(CartScreen),{ssr:false})

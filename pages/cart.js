@@ -57,7 +57,11 @@ export default function CartScreen() {
                                </Link>
                              </td>
                              <td className="p-5 text-right">
-                               {item.quantity}
+                               {
+                                [...Array(item.countInStock)]
+                               }
+
+
                              </td>
                              <td className="p-5 text-right">
                                ${item.price}

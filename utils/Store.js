@@ -21,6 +21,7 @@ function reducer(state, action){
                 (item) => item.name === existItem.name ? newItem : item
             ):
             [...state.cart.cartItems, newItem];
+            Cookies.set('cart', JSON.stringify({ ...state.cart, cartItems}));
             return {...state, cart: { ...state.cart, cartItems}}
         }
 

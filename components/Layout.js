@@ -4,6 +4,7 @@ import Head from "next/head"
 import Link from "next/link"
 import React, { useContext, useEffect, useState } from 'react';
 import { ToastContainer } from "react-toastify";
+// import 'react-toastify/dist/ReactToastity.css';
 
 export default function Layout({ title,children}) {
 

@@ -5,8 +5,8 @@ export default NextAuth({
         strategy:'jwt',
     },
     callbacks:{
-        async jwt(){
-            
+        async jwt({token,user}){
+            if(user?._id) token._id = user._id;
         }
     }
 

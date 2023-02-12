@@ -22,6 +22,17 @@ async function connect(){
 
 }
 
-const db = {connect};
+async function disconnect(){
+    if(connection.isConnected){
+        if(process.env.NODE_ENV === 'production'){
+            await mongoose.disconnect();
+            connection.isConnected = false;
+        }else{
+            console.log('not disconnected');
+        }
+    }
+}
+
+const db = {connect, disconnect};
 
 export default db;

@@ -1,12 +1,23 @@
 import Layout from "@/components/Layout"
 import Link from "next/link"
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
-import {signIn} from 'next-auth/react'
+import {signIn, useSession} from 'next-auth/react'
 import { getError } from "@/utils/error";
 import { toast } from "react-toastify";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/router";
 
 export default function LoginScreen() {
+
+    const {data: session} = useSession();
+    const router = useRouter();
+
+    useEffect(()=>{
+        if(session?.user){
+            router.push(redirect || '/');
+        }
+    },[])
     const {
         handleSubmit,
         register,

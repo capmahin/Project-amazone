@@ -1,10 +1,13 @@
 import { Store } from "@/utils/store"
+import { useSession } from "next-auth/react";
 import Head from "next/head"
 import Link from "next/link"
 import React, { useContext, useEffect, useState } from 'react';
 import { ToastContainer } from "react-toastify";
 
 export default function Layout({ title,children}) {
+
+  const {status, data:session} = useSession();
 
   const {state} = useContext(Store);
   const {cart} = state;
@@ -38,7 +41,17 @@ export default function Layout({ title,children}) {
                   </span>
                 )}
                 </a></Link>
-                <Link legacyBehavior href="/login"><a className="p-2">Login</a></Link>
+                
+                 {status === 'loading' ? (
+                  'Loading'
+                 ): session?.user ? (
+                  session.user.name
+                 ):(
+                  <Link legacyBehavior href="/login">
+                    <a className="p-2">Login</a>
+                  </Link>
+                 )}
+                  
             </div>
           </nav>
         </header>

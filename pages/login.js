@@ -3,6 +3,7 @@ import Link from "next/link"
 import React from 'react';
 import { useForm } from "react-hook-form";
 import {signIn} from 'next-auth/react'
+import { getError } from "@/utils/error";
 
 export default function LoginScreen() {
     const {

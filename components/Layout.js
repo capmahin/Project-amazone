@@ -14,7 +14,7 @@ export default function Layout({ title,children}) {
 
   const {status, data:session} = useSession();
 
-  const {state} = useContext(Store);
+  const {state , dispatch} = useContext(Store);
   const {cart} = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
 
@@ -24,6 +24,7 @@ export default function Layout({ title,children}) {
 
   const logoutClickHandler = () =>{
     Cookies.remove('cart');
+    dispatch({type:'CART_RESET'});
     signOut({callbackUrl:'/login'});
   }
   return (

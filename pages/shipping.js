@@ -1,6 +1,8 @@
 import CheckoutWizard from "@/components/CheckoutWizard"
 import Layout from "@/components/Layout"
-import React from 'react'
+import { Store } from "@/utils/store";
+import Cookies from "js-cookie";
+import React, { useContext } from 'react'
 import { useForm } from "react-hook-form"
 
 export default function ShippingScreen() {
@@ -11,12 +13,29 @@ export default function ShippingScreen() {
         setValue,
         getValues,
     } = useForm();
+
+    const {state, dispatch} = useContext(Store);
+    const {cart} = state;
     const submitHandler = ({fullName, address, city, postCode, country}) =>{
      dispatch({
         type:'SAVE_SHIPPING_ADDRESS',
-        payload:{fullName, address, city, postCode, country, location},
-     })
-    }
+        payload:{fullName, address, city, postCode, country},
+     });
+     Cookies.set(
+        'cart',
+        JSON.stringify({
+            ...cart,
+            shippingAddress:{
+                fullName,
+                address,
+                city,
+                postCode,
+                country,
+                location,
+            },
+        })
+     );
+    };
   return (
     <Layout title="Shipping Address">
       <CheckoutWizard activeStep={1}/>

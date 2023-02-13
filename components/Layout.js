@@ -50,7 +50,7 @@ export default function Layout({ title,children}) {
                  ): session?.user ? (
                   <Menu as="div" className="relative inline-block">
                     <Menu.Button className="text-blue-600">
-                      
+                      {session.user.name}
                     </Menu.Button>
                   </Menu>
                  ):(

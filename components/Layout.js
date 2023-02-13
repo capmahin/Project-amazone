@@ -52,6 +52,7 @@ export default function Layout({ title,children}) {
                     <Menu.Button className="text-blue-600">
                       {session.user.name}
                     </Menu.Button>
+                    <Menu.Items className="absolute right-0 w-56 origin-top-right shadow-lg"></Menu.Items>
                   </Menu>
                  ):(
                   <Link legacyBehavior href="/login">

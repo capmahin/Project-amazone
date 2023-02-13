@@ -1,7 +1,10 @@
+import Layout from "@/components/Layout"
 import React from 'react'
 
-export default function shipping() {
+export default function ShippingScreen() {
   return (
-    <div>shipping</div>
+    <Layout title="Shipping Address">
+
+    </Layout>
   )
 }

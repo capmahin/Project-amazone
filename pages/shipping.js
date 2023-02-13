@@ -11,7 +11,6 @@ export default function ShippingScreen() {
         register,
         formState: {errors},
         setValue,
-        getValues,
     } = useForm();
 
     const {state, dispatch} = useContext(Store);
@@ -24,7 +23,7 @@ export default function ShippingScreen() {
       setValue('city', shippingAddress.city);
       setValue('postCode', shippingAddress.postCode);
       setValue('country', shippingAddress.country);
-    },[setValue, shippingAddress.address, shippingAddress.city, shippingAddress.country, shippingAddress.fullName, shippingAddress.postCode]);
+    },[setValue, shippingAddress]);
     const submitHandler = ({fullName, address, city, postCode, country}) =>{
      dispatch({
         type:'SAVE_SHIPPING_ADDRESS',

@@ -11,8 +11,11 @@ export default function ShippingScreen() {
         setValue,
         getValues,
     } = useForm();
-    const submitHandler = () =>{
-
+    const submitHandler = ({fullName, address, city, postCode, country}) =>{
+     dispatch({
+        type:'SAVE_SHIPPING_ADDRESS',
+        payload:{fullName, address, city, postCode, country, location},
+     })
     }
   return (
     <Layout title="Shipping Address">

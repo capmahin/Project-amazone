@@ -106,3 +106,5 @@ export default function ShippingScreen() {
     </Layout>
   )
 }
+
+ShippingScreen.auth=true;

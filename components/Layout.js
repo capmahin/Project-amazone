@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 // import 'react-toastify/dist/ReactToastity.css';
 
 import { Menu } from "@headlessui/react";
+import DropdownLink from "./DropdownLink";
 
 export default function Layout({ title,children}) {
 
@@ -52,7 +53,13 @@ export default function Layout({ title,children}) {
                     <Menu.Button className="text-blue-600">
                       {session.user.name}
                     </Menu.Button>
-                    <Menu.Items className="absolute right-0 w-56 origin-top-right shadow-lg"></Menu.Items>
+                    <Menu.Items className="absolute right-0 w-56 origin-top-right shadow-lg">
+                      <Menu.Item>
+                        <DropdownLink className="dropdown-link" href='/profile'>
+                         Profile
+                        </DropdownLink>
+                      </Menu.Item>
+                    </Menu.Items>
                   </Menu>
                  ):(
                   <Link legacyBehavior href="/login">

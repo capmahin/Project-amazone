@@ -48,7 +48,11 @@ export default function Layout({ title,children}) {
                  {status === 'loading' ? (
                   'Loading'
                  ): session?.user ? (
-                  <Menu as="div" className="relative inline-block"></Menu>
+                  <Menu as="div" className="relative inline-block">
+                    <Menu.Button className="text-blue-600">
+                      
+                    </Menu.Button>
+                  </Menu>
                  ):(
                   <Link legacyBehavior href="/login">
                     <a className="p-2">Login</a>

@@ -1,3 +1,4 @@
+import CheckoutWizard from "@/components/CheckoutWizard"
 import Layout from "@/components/Layout"
 import React from 'react'
 

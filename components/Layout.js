@@ -6,6 +6,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ToastContainer } from "react-toastify";
 // import 'react-toastify/dist/ReactToastity.css';
 
+import { Menu } from "@headlessui/react";
+
 export default function Layout({ title,children}) {
 
   const {status, data:session} = useSession();
@@ -46,7 +48,7 @@ export default function Layout({ title,children}) {
                  {status === 'loading' ? (
                   'Loading'
                  ): session?.user ? (
-                  session.user.name
+                  <Menu as="div" className="relative inline-block"></Menu>
                  ):(
                   <Link legacyBehavior href="/login">
                     <a className="p-2">Login</a>

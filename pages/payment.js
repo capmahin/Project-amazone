@@ -1,6 +1,7 @@
 import CheckoutWizard from "@/components/CheckoutWizard"
 import Layout from "@/components/Layout"
 import { Store } from "@/utils/store";
+import Cookies from "js-cookie";
 import { useRouter } from "next/router"
 import React, { useContext, useEffect, useState } from 'react'
 import { toast } from "react-toastify";
@@ -19,6 +20,15 @@ export default function PaymentScreen() {
          return   toast.error('Payment method is required');
         }
         dispatch({type: 'SAVE_PAYMENT_METHOD', payload:selectedPaymentMethod});
+        Cookies.set(
+            'cart',
+            JSON.stringify({
+                ...cart,
+                paymentMethod:selectedPaymentMethod,
+            })
+        );
+
+        router.push('/placeorder');
     };
     useEffect(()=>{
       if(!shippingAddress.address){

@@ -1,6 +1,6 @@
 import CheckoutWizard from "@/components/CheckoutWizard"
 import Layout from "@/components/Layout"
-import { Store } from "@/utils/store";
+import { Store } from "@/utils/Store";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router"
 import React, { useContext, useEffect, useState } from 'react'

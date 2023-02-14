@@ -1,4 +1,4 @@
-import { Store } from "@/utils/store"
+import { Store } from "@/utils/Store"
 import { signOut, useSession } from "next-auth/react";
 import Head from "next/head"
 import Link from "next/link"

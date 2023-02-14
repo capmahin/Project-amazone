@@ -1,7 +1,10 @@
+import Layout from "@/components/Layout"
 import React from 'react'
 
 export default function PaymentScreen() {
   return (
-    <div>payment</div>
+    <Layout title="Payment Method">
+
+    </Layout>
   )
 }

@@ -2,6 +2,7 @@
 // import { Inter } from '@next/font/google'
 import Layout from "@/components/Layout"
 import ProductItem from "@/components/ProductItem"
+import Product from "@/models/Product";
 import data from "@/utils/data"
 import db from "@/utils/db";
 
@@ -23,4 +24,10 @@ export default function Home() {
 
 export async function getServerSideProps(){
   await db.connect();
+  const products = await Product.find().lean();
+  return {
+    props:{
+       products,
+    },
+  };
 }

@@ -1,5 +1,7 @@
 import Layout from "@/components/Layout"
+import Product from "@/models/Product";
 import data from "@/utils/data";
+import db from "@/utils/db";
 import { Store } from "@/utils/Store";
 import Image from "next/image";
 import Link from "next/link";
@@ -73,4 +75,19 @@ export default function ProductScreen() {
      </div>
     </Layout>
   )
+}
+
+export async function getServerSideProps(context){
+  const {params} = context;
+  const {slug} = params;
+
+  await db.connect();
+  const product = await Product.findOne({slug}).lean();
+  await db.disconnect();
+  return{
+    props:{
+      product:product ? db.convertDocToObj(product) : null,
+    },
+  };
+
 }

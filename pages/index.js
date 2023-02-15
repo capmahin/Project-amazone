@@ -8,6 +8,7 @@ import db from "@/utils/db";
 import { Store } from "@/utils/Store";
 import axios from "axios";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -22,11 +23,13 @@ export default function Home({products}) {
     const {data} = await axios.get(`/api/products/${product._id}`);
 
     if(data.countInStock < quantity){
-      alert('Sorry. Product is out of stock')
+      toast.error('Sorry. Product is out of stock')
       return;
     }
 
         dispatch({type: 'CART_ADD_ITEM', payload:{ ...product, quantity}});
+
+        toast.success('Product added to cart');
         
   };
 

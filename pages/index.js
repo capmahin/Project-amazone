@@ -29,7 +29,7 @@ export default function Home({products}) {
 
         dispatch({type: 'CART_ADD_ITEM', payload:{ ...product, quantity}});
 
-        toast.success('Product added to cart');
+        toast.success('Product added to the cart');
         
   };
 

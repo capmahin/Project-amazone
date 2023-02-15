@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout"
 import Product from "@/models/Product";
-import data from "@/utils/data";
+// import data from "@/utils/data";
 import db from "@/utils/db";
 import { Store } from "@/utils/Store";
 import Image from "next/image";
@@ -8,12 +8,10 @@ import Link from "next/link";
 import { useRouter } from "next/router"
 import React, { useContext } from 'react'
 
-export default function ProductScreen() {
+export default function ProductScreen(props) {
+  const {product} = props;
   const {state, dispatch} = useContext(Store)
   const router = useRouter();
-  const {query} = useRouter();
-  const {slug} = query;
-  const product = data.products.find(x => x.slug === slug)
   if(!product){
     return <div>Product Not Found</div>
   }

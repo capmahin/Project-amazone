@@ -13,7 +13,7 @@ export default function ProductScreen(props) {
   const {state, dispatch} = useContext(Store)
   const router = useRouter();
   if(!product){
-    return <div>Product Not Found</div>
+    return <Layout title="Product Not Found">Product Not Found</Layout>
   }
 
   const addToCartHandler = () =>{

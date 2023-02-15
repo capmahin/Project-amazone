@@ -3,6 +3,7 @@
 import Layout from "@/components/Layout"
 import ProductItem from "@/components/ProductItem"
 import data from "@/utils/data"
+import db from "@/utils/db";
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -17,4 +18,9 @@ export default function Home() {
       </div>
     </Layout>
   )
+}
+
+
+export async function getServerSideProps(){
+  await db.connect();
 }

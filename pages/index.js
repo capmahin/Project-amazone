@@ -3,17 +3,17 @@
 import Layout from "@/components/Layout"
 import ProductItem from "@/components/ProductItem"
 import Product from "@/models/Product";
-import data from "@/utils/data"
+// import data from "@/utils/data"
 import db from "@/utils/db";
 
 
 // const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({products}) {
   return (
     <Layout title='Home Page'>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
-        {data.products.map((product)=>(
+        {products.map((product)=>(
           <ProductItem product={product} key={product.slug}></ProductItem>
         ))}
       </div>

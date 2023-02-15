@@ -3,6 +3,7 @@ import Product from "@/models/Product";
 // import data from "@/utils/data";
 import db from "@/utils/db";
 import { Store } from "@/utils/Store";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router"
@@ -16,9 +17,10 @@ export default function ProductScreen(props) {
     return <Layout title="Product Not Found">Product Not Found</Layout>
   }
 
-  const addToCartHandler = () =>{
+  const addToCartHandler = async () =>{
     const existItem = state.cart.cartItems.find((x)=> x.slug === product.slug)
     const quantity = existItem ? existItem.quantity + 1 : 1;
+    const {data} = await axios.get(`/api/products/${product._id}`);
 
     if(product.countInStock < quantity){
       alert('Sorry. Product is out of stock')

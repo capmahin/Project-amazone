@@ -1,6 +1,7 @@
 import CheckoutWizard from "@/components/CheckoutWizard"
 import Layout from "@/components/Layout"
 import { Store } from "@/utils/Store"
+import Image from "next/image"
 import Link from "next/link"
 import React, { useContext } from 'react'
 
@@ -50,7 +51,37 @@ export default function PlaceOrderScreen() {
                     <th className="px-5 text-right">Subtotal</th>
                    </tr>
                 </thead>
+                <tbody>
+                    {cartItems.map((item)=>{
+                        <tr key={item._id} className="border-b">
+                            <td>
+                                <Link legacyBehavior href={`/product/${item.slug}`}>
+                                    <a className="flex items-center">
+                                        <Image
+                                        src={item.image}
+                                        alt={item.name}
+                                        width={50}
+                                        height={50}
+                                        ></Image>
+                                        &nbsp;
+                                        {item.name}
+                                    </a>
+                                </Link>
+                            </td>
+                            <td className="p-5 text-right">
+                              {item.quantity}
+                            </td>
+                            <td className="p-5 text-right">{item.price}</td>
+                            <td className="p-5 text-right">
+                                ${item.quantity * item.price}
+                            </td>
+                        </tr>
+                    })}
+                </tbody>
              </table>
+             <div>
+                <Link legacyBehavior href="/cart">Edit</Link>
+             </div>
             </div>
           </div>
         </div>

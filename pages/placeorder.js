@@ -32,7 +32,10 @@ export default function PlaceOrderScreen() {
                 <Link legacyBehavior href="/shipping">Edit</Link>
             </div>
             </div>
-           
+           <div className="card p-5">
+             <h2 className="mb-2 text-lg">Payment Method</h2>
+             <div>{paymentMethod}</div>
+           </div>
 
           </div>
         </div>

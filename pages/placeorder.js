@@ -1,14 +1,65 @@
 import CheckoutWizard from "@/components/CheckoutWizard"
 import Layout from "@/components/Layout"
+import { getError } from "@/utils/error"
 import { Store } from "@/utils/Store"
+import axios from "axios"
+import Cookies from "js-cookie"
 import Image from "next/image"
 import Link from "next/link"
-import React, { useContext } from 'react'
+import { useRouter } from "next/router"
+import React, { useContext, useEffect, useState } from 'react'
+import { toast } from "react-toastify"
 
 export default function PlaceOrderScreen() {
     const {state, dispatch} = useContext(Store);
     const {cart} = state;
     const {cartItems, shippingAddress, paymentMethod} = cart;
+
+    const round2 = (num) => Math.round(num * 100 + Number.EPSILON)/ 100;
+    const itemsPrice = round2(cartItems.reduce((a, c)=>a+c.quantity * c.price, 0));
+
+    const shippingPrice = itemsPrice > 200? 0 : 15;
+    const taxPrice = round2(itemsPrice * 0.15);
+    const totalPrice = round2(itemsPrice + shippingPrice + taxPrice);
+    const router = useRouter();
+
+    useEffect(()=>{
+        if(!paymentMethod){
+            router.push('/');
+        }
+    },[paymentMethod, router]);
+
+    const [loading, setLoading] = useState(false);
+
+    const placeOrderHandler = async () =>{
+        try{
+           setLoading(true);
+           const {data} = await axios.post('/api/orders',{
+            orderItems:cartItems,
+            shippingAddress,
+            paymentMethod,
+            itemsPrice,
+            shippingPrice,
+            taxPrice,
+            totalPrice,
+           });
+
+           setLoading(false);
+           dispatch({type:'CART_CLEAR_ITEMS'});
+           Cookies.set(
+            'cart',
+            JSON.stringify({
+                ...cart,
+                cartItems:[],
+            })
+           );
+
+           router.push(`/order/${data._id}`);
+        }catch (err){
+          setLoading(false);
+          toast.error(getError(err));
+        }
+    }
   return (
    <Layout title="Place Order">
     <CheckoutWizard activeStep={3} />
@@ -84,9 +135,50 @@ export default function PlaceOrderScreen() {
              </div>
             </div>
           </div>
+          <div>
+            <div className="card p-5">
+                <h2 className="mb-2 text-lg">Order Summary</h2>
+                <ul>
+                    <li>
+                        <div className="mb-2 flex justify-between">
+                            <div>Items</div>
+                            <div>${itemsPrice}</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="mb-2 flex justify-between">
+                            <div>Tax</div>
+                            <div>${taxPrice}</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="mb-2 flex justify-between">
+                            <div>Shipping</div>
+                            <div>${shippingPrice}</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="mb-2 flex justify-between">
+                            <div>Total</div>
+                            <div>${totalPrice}</div>
+                        </div>
+                    </li>
+                    <li>
+                        <button disable={loading}
+                        onClick={placeOrderHandler}
+                        className="primary-button w-full">
+                            {loading ? 'Loading...': 'Place Order'}
+
+                        </button>
+                    </li>
+                </ul>
+            </div>
+          </div>
         </div>
     )
     }
    </Layout>
   )
 }
+
+PlaceOrderScreen.auth = true;

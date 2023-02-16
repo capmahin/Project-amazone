@@ -1,7 +1,10 @@
+import Layout from "@/components/Layout"
 import React from 'react'
 
 export default function PlaceOrderScreen() {
   return (
-    <div>placeorder</div>
+   <Layout title="Place Order">
+
+   </Layout>
   )
 }

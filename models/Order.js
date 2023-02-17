@@ -12,6 +12,8 @@ const orderSchema = new mongoose.Schema(
         }
         ],
         //Shipping
+
+        //fixed this bug tommorow
         shippingAddress:{
             fullName:{type:String, required: true},
             address:{type:String, required: true},

@@ -25,7 +25,7 @@ export default function PlaceOrderScreen() {
 
     useEffect(()=>{
         if(!paymentMethod){
-            router.push('/');
+            router.push('/payment');
         }
     },[paymentMethod, router]);
 

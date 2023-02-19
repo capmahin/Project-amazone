@@ -50,11 +50,11 @@ function OrderScreen(){
             fetchOrder();
         }
         
-    },[order._id, orderId]);
+    },[order, orderId]);
     
 return (
     <Layout title={`Order ${orderId}`}>
-
+      <h1 className="mb-4 text-xl">{`Order ${orderId}`}</h1>
     </Layout>
 )
 }

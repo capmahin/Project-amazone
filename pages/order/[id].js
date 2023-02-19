@@ -1,6 +1,8 @@
 import Layout from "@/components/Layout";
+import { getError } from "@/utils/error";
+import axios from "axios";
 import { useRouter } from "next/router";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 
 function reducer (state, action){
     switch(action.type){
@@ -12,6 +14,8 @@ function reducer (state, action){
 
         case 'FETCH_FAIL':
             return {...state, loading:false, error:action.payload};
+            default:
+                state;
     }
 }
 function OrderScreen(){
@@ -29,6 +33,18 @@ function OrderScreen(){
         order:{},
         error:'',
     });
+    useEffect (()=>{
+        const fetchOrder = async ()=>{
+          try{
+            dispatch({type:'FETCH_REQUEST'});
+          const {data}= await axios.get(`/api/orders/${orderId}`);
+          dispatch({type: 'FETCH_SUCCESS', payload:data});
+          } catch(err){
+            dispatch({type:'FETCH_FAIL', payload:getError(err)};)
+          }
+        }
+        fetchOrder();
+    },[])
     
 return (
     <Layout title={`Order ${orderId}`}>

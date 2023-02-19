@@ -1,5 +1,7 @@
 // /api/orders/:id
 
+import Order from "@/models/Order";
+
 const { default: db } = require("@/utils/db");
 const { getSession } = require("next-auth/react")
 

@@ -40,11 +40,17 @@ function OrderScreen(){
           const {data}= await axios.get(`/api/orders/${orderId}`);
           dispatch({type: 'FETCH_SUCCESS', payload:data});
           } catch(err){
-            dispatch({type:'FETCH_FAIL', payload:getError(err)};)
+            dispatch({type:'FETCH_FAIL', payload:getError(err)});
           }
+        };
+        if(
+            !order._id ||
+            (order._id && order._id !== orderId)
+        ){
+            fetchOrder();
         }
-        fetchOrder();
-    },[])
+        
+    },[order._id, orderId]);
     
 return (
     <Layout title={`Order ${orderId}`}>

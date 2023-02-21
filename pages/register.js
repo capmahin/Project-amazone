@@ -100,8 +100,8 @@ export default function LoginScreen() {
         }
         className="w-full" id="confirmPassword" autoFocus>
         </input>
-        {errors.confirmPassword && (
-            <div className="text-red-500">{errors.confirmPassword.message}</div>
+        {errors.confirmPassword && errors.confirmPassword.type === 'validate'&&(
+            <div className="text-red-500">Password do not match</div>
         )}
         </div>
 

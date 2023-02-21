@@ -1,3 +1,4 @@
+import bcryptjs from 'bcryptjs';
 import User from "@/models/User";
 import db from "@/utils/db";
 
@@ -28,6 +29,23 @@ async function handler(req,res){
         await db.disconnect();
         return;
      }
+
+     const newUser = new User({
+        name,
+        email,
+        password: bcryptjs.hashSync(password),
+        isAdmin:false,
+     });
+
+     const user = await newUser.save();
+     await db.disconnect();
+     res.status(201).send({
+        message: 'Created user!',
+        _id: user._id,
+        name: user.name,
+        email:user.email,
+        isAdmin:user.isAdmin,
+     });
 }
 
 export default handler;

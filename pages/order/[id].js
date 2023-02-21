@@ -1,6 +1,8 @@
 import Layout from "@/components/Layout";
 import { getError } from "@/utils/error";
 import axios from "axios";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useReducer } from "react";
 
@@ -110,6 +112,25 @@ return (
                             <th className="px-5 text-right">Subtotal</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        {orderItems.map((item)=>(
+                            <tr key={item._id} className="border-b">
+                                <td>
+                                    <Link legacyBehavior href={`/product/${item.slug}`}>
+                                        <a className="flex items-center">
+                                            <Image
+                                            src={item.image}
+                                            alt={item.name}
+                                            width={50}
+                                            height={50}></Image>
+                                            &nbsp;
+                                            {item.name}
+                                        </a>
+                                    </Link>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
                 </table>
                </div>
             </div>

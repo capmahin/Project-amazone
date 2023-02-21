@@ -52,6 +52,19 @@ function OrderScreen(){
         
     },[order, orderId]);
     
+    const {
+        ShippingAddress,
+        paymentMethod,
+        orderItems,
+        itemsPrice,
+        taxPrice,
+        shippingPrice,
+        totalPrice,
+        isPaid,
+        paidAt,
+        isDeliverd,
+        deliverdAt,
+    }= order;
 return (
     <Layout title={`Order ${orderId}`}>
       <h1 className="mb-4 text-xl">{`Order ${orderId}`}</h1>
@@ -64,6 +77,30 @@ return (
             <div className="overflow-x-auto md:col-span-3">
                <div className="card p-5">
                 <h2 className="mb-2 text-lg">Shipping Address</h2>
+                <div>
+                    {ShippingAddress.fullName}, {ShippingAddress.address},{' '}
+                    {ShippingAddress.city},{ShippingAddress.postCode},{' '} {ShippingAddress.country}
+                </div>
+                {isDeliverd?(
+                    <div className="alert-success">Delivered at {deliverdAt}</div>
+                ) : (
+                    <div className="alert-error">Not delivered</div>
+                )}
+               </div>
+               <div className="card p-5">
+                <h2 className="mb-2 text-lg">Payment Method</h2>
+                <div>{paymentMethod}</div>
+                {isPaid?(
+                    <div className="alert-success">Paid at{paidAt}</div>
+                ):(
+                    <div className="alert-error">Not paid</div>
+                )
+
+                }
+
+               </div>
+               <div className="card overflow-x-auto p-5">
+                <h2 className="mb-2 text-lg">Order Items</h2>
                </div>
             </div>
         </div>

@@ -48,9 +48,9 @@ export default function LoginScreen() {
         }
     }
   return (
-    <Layout title="Login">
+    <Layout title="Create Account">
      <form className="mx-auto max-w-screen-md" onSubmit={handleSubmit(submitHandler)}>
-        <h1 className="mb-4 text-xl">Login</h1>
+        <h1 className="mb-4 text-xl">Create Account</h1>
         <div className="mb-4">
         <label htmlFor="name">Name</label>
         <input type="text"
@@ -119,12 +119,13 @@ export default function LoginScreen() {
 
 
         <div className="mb-4">
-         <button className="primary-button">Login</button>
+         <button className="primary-button">Register</button>
         </div>
         <div className="mb-4">
-         Don&apos;t have account? &nbsp;
+            Don&apos;t have an account? &nbsp;
+            <Link legacyBehavior href={`/register?redirect=${redirect || '/'}`}>Register</Link>
         </div>
-        <Link legacyBehavior href="register">Register</Link>
+       
      </form>
     </Layout>
   )

@@ -7,6 +7,7 @@ import { getError } from "@/utils/error";
 import { toast } from "react-toastify";
 // import { redirect } from "next/dist/server/api-utils";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function LoginScreen() {
 
@@ -26,9 +27,14 @@ export default function LoginScreen() {
         formState: {errors},
     } = useForm();
 
-    const submitHandler = async ({email, password}) =>{
+    const submitHandler = async ({ name, email, password}) =>{
         //    console.log(email,password); 
         try{
+            await axios.post('/api/auth/signup',{
+                name,
+                email,
+                password,
+            })
             const result = await signIn('credentials',{
                 redirect:false,
                 email,

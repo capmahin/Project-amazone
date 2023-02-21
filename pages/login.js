@@ -80,8 +80,9 @@ export default function LoginScreen() {
         </div>
         <div className="mb-4">
          Don&apos;t have account? &nbsp;
+         <Link legacyBehavior href={`/register?redirect=${redirect || '/'}`}>Register</Link>
         </div>
-        <Link legacyBehavior href="register">Register</Link>
+        
      </form>
     </Layout>
   )

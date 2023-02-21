@@ -55,6 +55,7 @@ function OrderScreen(){
 return (
     <Layout title={`Order ${orderId}`}>
       <h1 className="mb-4 text-xl">{`Order ${orderId}`}</h1>
+      {loading? (<div>Loading...</div>):}
     </Layout>
 )
 }

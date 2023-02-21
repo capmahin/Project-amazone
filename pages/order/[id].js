@@ -58,6 +58,9 @@ return (
       {loading? (<div>Loading...</div>):
       error? (
         <div className="alert-error">{error}</div>
+      ):
+      (
+        <div className="grid md:grid-cols-4 md:gap-5"></div>
       )}
     </Layout>
 )

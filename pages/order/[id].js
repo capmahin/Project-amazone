@@ -60,7 +60,13 @@ return (
         <div className="alert-error">{error}</div>
       ):
       (
-        <div className="grid md:grid-cols-4 md:gap-5"></div>
+        <div className="grid md:grid-cols-4 md:gap-5">
+            <div className="overflow-x-auto md:col-span-3">
+               <div className="card p-5">
+                <h2 className="mb-2 text-lg">Shipping Address</h2>
+               </div>
+            </div>
+        </div>
       )}
     </Layout>
 )

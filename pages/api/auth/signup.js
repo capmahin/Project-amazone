@@ -1,3 +1,5 @@
+import User from "@/models/User";
+import db from "@/utils/db";
 
 async function handler(req,res){
      if(req.method !== 'POST'){
@@ -9,11 +11,21 @@ async function handler(req,res){
         !email ||
         !email.includes('@')||
         !password ||
-        password.trim().length < 3
+        password.trim().length < 5
      ){
         res.status(422).json({
             message: 'Validation error',
         });
+        return;
+     }
+
+
+     await db.connect();
+
+     const existingUser = await User.findOne({email:email});
+     if(existingUser){
+        res.status(422).json({message:'User exists already'});
+        await db.disconnect();
         return;
      }
 }

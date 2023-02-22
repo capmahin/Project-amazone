@@ -1,3 +1,4 @@
+import Layout from "@/components/Layout";
 import { getError } from "@/utils/error"
 import axios from "axios";
 import React, { useEffect, useReducer } from 'react'
@@ -40,6 +41,18 @@ export default function OrderHistoryScreen() {
         fetchOrders();
     },[])
   return (
-    <div>order-history</div>
+    <Layout title = "Order History">
+        <h1>Order History</h1>
+        {loading ? (
+            <div>Loading...</div>
+        ): error ?(
+            <div className="alert-error">{error}</div>
+        ):(
+            <div className="overflow-x-auto">
+
+            </div>
+        )}
+
+    </Layout>
   )
 }

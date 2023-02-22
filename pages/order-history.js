@@ -8,10 +8,13 @@ export default function OrderHistoryScreen() {
             try{
                dispatch({type:'FETCH_REQUEST'});
                const {data} = await axios.get(`/api/orders/history`);
+               dispatch({type: 'FETCH_SUCCESS', payload:data});
             } catch(err){
                 dispatch({type: 'FETCH_FAIL', payload:getError(err)});
             }
-        }
+        };
+
+        fetchOrders();
     },[])
   return (
     <div>order-history</div>

@@ -1,8 +1,22 @@
 import { getError } from "@/utils/error"
 import axios from "axios";
-import React, { useEffect } from 'react'
+import React, { useEffect, useReducer } from 'react'
+
+
+function reducer(state, action){
+    switch(action.type){
+         case 'FETCH_REQUEST':
+            return {...state,loading:true, error:''};
+    }
+}
 
 export default function OrderHistoryScreen() {
+
+    const [{loading, error, orders}, dispatch]= useReducer(reducer,{
+        loading:true,
+        orders:[],
+        error:'',
+    });
     useEffect(()=>{
         const fetchOrders = async ()=>{
             try{

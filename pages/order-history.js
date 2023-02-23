@@ -60,6 +60,13 @@ export default function OrderHistoryScreen() {
                 <th className="px-5 text-left">ACTION</th>
               </tr>
               </thead>
+              <tbody>
+                {orders.map((order)=>(
+                    <tr key={order._id} className="border-b">
+                        <td className="p-5">{order._id.substring(20, 24)}</td>
+                    </tr>
+                ))}
+              </tbody>
              </table>
             </div>
         )}

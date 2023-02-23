@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import { getError } from "@/utils/error"
 import axios from "axios";
+import Link from "next/link";
 import React, { useEffect, useReducer } from 'react'
 
 
@@ -73,6 +74,11 @@ export default function OrderHistoryScreen() {
                         <td className="p-5">
                          {order.isDelivered
                          ? `${order.deliveredAt.substring(0,10)}`:'not delivered'}
+                        </td>
+                        <td className="p-5">
+                        <Link legacyBehavior href={`/order/${order._id}`} passHref>
+                            <a>Details</a>
+                        </Link>
                         </td>
                     </tr>
                 ))}

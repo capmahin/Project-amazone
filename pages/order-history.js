@@ -49,7 +49,11 @@ export default function OrderHistoryScreen() {
             <div className="alert-error">{error}</div>
         ):(
             <div className="overflow-x-auto">
+             <table className="min-w-full">
+              <thead className="border-b">
 
+              </thead>
+             </table>
             </div>
         )}
 

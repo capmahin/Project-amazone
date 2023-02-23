@@ -70,6 +70,10 @@ export default function OrderHistoryScreen() {
                              {order.isPaid
                              ? `${order.paidAt.substring(0,10)}`: 'not paid'}
                         </td>
+                        <td className="p-5">
+                         {order.isDelivered
+                         ? `${order.deliveredAt.substring(0,10)}`:'not delivered'}
+                        </td>
                     </tr>
                 ))}
               </tbody>

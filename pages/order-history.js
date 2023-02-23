@@ -64,6 +64,7 @@ export default function OrderHistoryScreen() {
                 {orders.map((order)=>(
                     <tr key={order._id} className="border-b">
                         <td className="p-5">{order._id.substring(20, 24)}</td>
+                        <td className="p-5">{order.createdAt.substring(0, 10)}</td>
                     </tr>
                 ))}
               </tbody>

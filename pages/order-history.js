@@ -51,7 +51,14 @@ export default function OrderHistoryScreen() {
             <div className="overflow-x-auto">
              <table className="min-w-full">
               <thead className="border-b">
-
+              <tr>
+                <th className="px-5 text-left">ID</th>
+                <th className="px-5 text-left">DATE</th>
+                <th className="px-5 text-left">TOTAL</th>
+                <th className="px-5 text-left">PAID</th>
+                <th className="px-5 text-left">DELIVERED</th>
+                <th className="px-5 text-left">ACTION</th>
+              </tr>
               </thead>
              </table>
             </div>

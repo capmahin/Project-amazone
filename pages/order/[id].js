@@ -64,8 +64,8 @@ function OrderScreen(){
         totalPrice,
         isPaid,
         paidAt,
-        isDeliverd,
-        deliverdAt,
+        isDelivered,
+        deliveredAt,
     }= order;
 return (
     <Layout title={`Order ${orderId}`}>
@@ -83,8 +83,8 @@ return (
                     {ShippingAddress.fullName}, {ShippingAddress.address},{' '}
                     {ShippingAddress.city},{ShippingAddress.postCode},{' '} {ShippingAddress.country}
                 </div>
-                {isDeliverd?(
-                    <div className="alert-success">Delivered at {deliverdAt}</div>
+                {isDelivered?(
+                    <div className="alert-success">Delivered at {deliveredAt}</div>
                 ) : (
                     <div className="alert-error">Not delivered</div>
                 )}

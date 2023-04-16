@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import {signIn, useSession} from 'next-auth/react'
 import { getError } from "@/utils/error";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 // import { redirect } from "next/dist/server/api-utils";
 import { useRouter } from "next/router";
 import axios from "axios";

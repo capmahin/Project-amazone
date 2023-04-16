@@ -4,7 +4,7 @@ import { Store } from "@/utils/Store";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router"
 import React, { useContext, useEffect, useState } from 'react'
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 export default function PaymentScreen() {
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');

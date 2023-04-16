@@ -3,7 +3,7 @@ import { signOut, useSession } from "next-auth/react";
 import Head from "next/head"
 import Link from "next/link"
 import React, { useContext, useEffect, useState } from 'react';
-import { ToastContainer } from "react-toastify";
+import  { Toaster } from 'react-hot-toast';
 // import 'react-toastify/dist/ReactToastity.css';
 
 import { Menu } from "@headlessui/react";

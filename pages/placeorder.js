@@ -83,6 +83,7 @@ export default function PlaceOrderScreen() {
                 {shippingAddress.country}
               </div>
               <div>
+                {/* error is in here */}
                 <Link legacyBehavior href="/shipping">Edit</Link>
             </div>
             </div>

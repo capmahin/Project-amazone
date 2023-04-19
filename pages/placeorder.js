@@ -173,6 +173,7 @@ export default function PlaceOrderScreen() {
                             {loading ? 'Loading...': 'Place Order'}
 
                         </button>
+                        {/* button */}
                     </li>
                 </ul>
             </div>
